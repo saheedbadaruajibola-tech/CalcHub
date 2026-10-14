@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator — CalcHub</title>
+  <meta name="description" content="Free age calculator. Find your exact age in years, months, days, and minutes.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="../index.html#finance">Finance</a>
+        <a href="../index.html#health">Health</a>
+        <a href="../index.html#daily">Daily</a>
+        <a href="../index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="../index.html" class="back-link">← All calculators</a>
+      <h1>Age Calculator</h1>
+      <p class="subtitle">Find your exact age down to the day.</p>
+
+      <div class="form-group">
+        <label for="birthdate">Date of Birth</label>
+        <input type="date" id="birthdate">
+      </div>
+
+      <button class="calc-btn" onclick="calcAge()"><span>Calculate Age</span></button>
+
+      <div class="result" id="result">
+        <h2>Your Age</h2>
+        <div class="highlight" id="ageMain">—</div>
+        <div class="result-item"><span class="label">Total Months</span><span class="value" id="ageMonths">0</span></div>
+        <div class="result-item"><span class="label">Total Weeks</span><span class="value" id="ageWeeks">0</span></div>
+        <div class="result-item"><span class="label">Total Days</span><span class="value" id="ageDays">0</span></div>
+        <div class="result-item"><span class="label">Total Hours</span><span class="value" id="ageHours">0</span></div>
+        <div class="result-item"><span class="label">Total Minutes</span><span class="value" id="ageMinutes">0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calcAge() {
+      const birthInput = document.getElementById('birthdate').value;
+      if (!birthInput) { alert('Please enter your date of birth'); return; }
+      const birth = new Date(birthInput);
+      const target = new Date();
+      if (birth > target) { alert('Birth date must be in the past'); return; }
+      let years = target.getFullYear() - birth.getFullYear();
+      let months = target.getMonth() - birth.getMonth();
+      let days = target.getDate() - birth.getDate();
+      if (days < 0) { months--; days += new Date(target.getFullYear(), target.getMonth(), 0).getDate(); }
+      if (months < 0) { years--; months += 12; }
+      const diffMs = target - birth;
+      const totalDays = Math.floor(diffMs / 86400000);
+      const totalWeeks = Math.floor(totalDays / 7);
+      const totalMonths = years * 12 + months;
+      const totalHours = Math.floor(diffMs / 3600000);
+      const totalMinutes = Math.floor(diffMs / 60000);
+      document.getElementById('ageMain').textContent = `${years}y ${months}m ${days}d`;
+      document.getElementById('ageMonths').textContent = totalMonths.toLocaleString();
+      document.getElementById('ageWeeks').textContent = totalWeeks.toLocaleString();
+      document.getElementById('ageDays').textContent = totalDays.toLocaleString();
+      document.getElementById('ageHours').textContent = totalHours.toLocaleString();
+      document.getElementById('ageMinutes').textContent = totalMinutes.toLocaleString();
+      showResult('result');
+    }
+  </script>
+</body>
+</html>

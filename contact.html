@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — CalcHub</title>
+  <meta name="description" content="Contact CalcHub. Send us feedback or suggest a new calculator.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="index.html#finance">Finance</a>
+        <a href="index.html#health">Health</a>
+        <a href="index.html#daily">Daily</a>
+        <a href="index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="index.html" class="back-link">← Back to home</a>
+      <h1>Contact Us</h1>
+      <p class="subtitle">We'd love to hear from you.</p>
+
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="calc-btn"><span>Send Message</span></button>
+      </form>
+
+      <div class="form-group" style="margin-top:40px">
+        <h3 style="margin-bottom:8px">Email us directly</h3>
+        <p style="color:var(--text-muted)">For general questions or partnership inquiries:<br>
+        <a href="mailto:saheedbadaruajibola@gmail.com" style="color:var(--primary);font-weight:500">saheedbadaruajibola@gmail.com</a></p>
+      </div>
+
+      <div class="form-group">
+        <h3 style="margin-bottom:8px">Suggest a calculator</h3>
+        <p style="color:var(--text-muted)">Need a calculator we don't have yet? Send us the details and we'll consider building it.</p>
+      </div>
+
+      <div class="form-group">
+        <h3 style="margin-bottom:8px">Response time</h3>
+        <p style="color:var(--text-muted)">We usually reply within 1–2 business days.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

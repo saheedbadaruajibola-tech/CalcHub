@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary Calculator — CalcHub</title>
+  <meta name="description" content="Free salary calculator. Convert between hourly, daily, weekly, monthly, and yearly pay.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="../index.html#finance">Finance</a>
+        <a href="../index.html#health">Health</a>
+        <a href="../index.html#daily">Daily</a>
+        <a href="../index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="../index.html" class="back-link">← All calculators</a>
+      <h1>Salary Calculator</h1>
+      <p class="subtitle">Convert between hourly, weekly, monthly, and yearly pay.</p>
+
+      <div class="form-group"><label for="amount">Amount ($)</label><input type="number" id="amount" value="20" step="0.01"></div>
+      <div class="form-group">
+        <label for="period">Per</label>
+        <select id="period">
+          <option value="hour">Hour</option>
+          <option value="day">Day</option>
+          <option value="week">Week</option>
+          <option value="month">Month</option>
+          <option value="year">Year</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="hours">Hours per Week</label><input type="number" id="hours" value="40"></div>
+      <div class="form-group"><label for="weeks">Weeks per Year</label><input type="number" id="weeks" value="52"></div>
+
+      <button class="calc-btn" onclick="calcSalary()"><span>Convert</span></button>
+
+      <div class="result" id="result">
+        <h2>Your Pay</h2>
+        <div class="result-item"><span class="label">Hourly</span><span class="value" id="perHour">$0</span></div>
+        <div class="result-item"><span class="label">Daily</span><span class="value" id="perDay">$0</span></div>
+        <div class="result-item"><span class="label">Weekly</span><span class="value" id="perWeek">$0</span></div>
+        <div class="result-item"><span class="label">Monthly</span><span class="value" id="perMonth">$0</span></div>
+        <div class="result-item"><span class="label">Yearly</span><span class="value" id="perYear">$0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calcSalary() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const period = document.getElementById('period').value;
+      const hpw = parseFloat(document.getElementById('hours').value) || 40;
+      const wpy = parseFloat(document.getElementById('weeks').value) || 52;
+      if (amount <= 0) return;
+      let hourly;
+      switch (period) {
+        case 'hour': hourly = amount; break;
+        case 'day': hourly = amount / (hpw / 5); break;
+        case 'week': hourly = amount / hpw; break;
+        case 'month': hourly = amount / (hpw * wpy / 12); break;
+        case 'year': hourly = amount / (hpw * wpy); break;
+      }
+      const daily = hourly * (hpw / 5);
+      const weekly = hourly * hpw;
+      const monthly = weekly * wpy / 12;
+      const yearly = weekly * wpy;
+      document.getElementById('perHour').textContent = formatCurrency(hourly);
+      document.getElementById('perDay').textContent = formatCurrency(daily);
+      document.getElementById('perWeek').textContent = formatCurrency(weekly);
+      document.getElementById('perMonth').textContent = formatCurrency(monthly);
+      document.getElementById('perYear').textContent = formatCurrency(yearly);
+      showResult('result');
+    }
+  </script>
+</body>
+</html>

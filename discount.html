@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discount Calculator — CalcHub</title>
+  <meta name="description" content="Free discount calculator. Find sale price, savings, and original price after any discount.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="../index.html#finance">Finance</a>
+        <a href="../index.html#health">Health</a>
+        <a href="../index.html#daily">Daily</a>
+        <a href="../index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="../index.html" class="back-link">← All calculators</a>
+      <h1>Discount Calculator</h1>
+      <p class="subtitle">Find the sale price and your savings.</p>
+
+      <div class="form-group"><label for="price">Original Price ($)</label><input type="number" id="price" value="100" step="0.01"></div>
+      <div class="form-group"><label for="discount">Discount (%)</label><input type="number" id="discount" value="25" step="0.1"></div>
+      <div class="form-group"><label for="tax">Tax (%) — optional</label><input type="number" id="tax" value="0" step="0.1"></div>
+
+      <button class="calc-btn" onclick="calcDiscount()"><span>Calculate</span></button>
+
+      <div class="result" id="result">
+        <h2>Final Price</h2>
+        <div class="highlight" id="finalPrice">$0</div>
+        <div class="result-item"><span class="label">You Save</span><span class="value" id="savings">$0</span></div>
+        <div class="result-item"><span class="label">After Discount</span><span class="value" id="afterDiscount">$0</span></div>
+        <div class="result-item"><span class="label">Tax Amount</span><span class="value" id="taxAmount">$0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calcDiscount() {
+      const price = parseFloat(document.getElementById('price').value);
+      const discount = parseFloat(document.getElementById('discount').value);
+      const tax = parseFloat(document.getElementById('tax').value) || 0;
+      if (price <= 0 || discount < 0 || discount > 100) return;
+      const savings = price * (discount / 100);
+      const afterDiscount = price - savings;
+      const taxAmount = afterDiscount * (tax / 100);
+      const finalPrice = afterDiscount + taxAmount;
+      document.getElementById('finalPrice').textContent = formatCurrency(finalPrice);
+      document.getElementById('savings').textContent = formatCurrency(savings);
+      document.getElementById('afterDiscount').textContent = formatCurrency(afterDiscount);
+      document.getElementById('taxAmount').textContent = formatCurrency(taxAmount);
+      showResult('result');
+    }
+  </script>
+</body>
+</html>

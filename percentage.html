@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator — CalcHub</title>
+  <meta name="description" content="Free percentage calculator. Solve percentages, increases, and percent change instantly.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="../index.html#finance">Finance</a>
+        <a href="../index.html#health">Health</a>
+        <a href="../index.html#daily">Daily</a>
+        <a href="../index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="../index.html" class="back-link">← All calculators</a>
+      <h1>Percentage Calculator</h1>
+      <p class="subtitle">Solve any percentage problem.</p>
+
+      <div class="form-group">
+        <label for="mode">What do you want to calculate?</label>
+        <select id="mode" onchange="updateMode()">
+          <option value="pctOf">What is X% of Y?</option>
+          <option value="isWhatPct">X is what % of Y?</option>
+          <option value="pctChange">% change from X to Y</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="valX" id="labelX">X (%)</label>
+        <input type="number" id="valX" value="15" step="any">
+      </div>
+
+      <div class="form-group">
+        <label for="valY" id="labelY">Y</label>
+        <input type="number" id="valY" value="200" step="any">
+      </div>
+
+      <button class="calc-btn" onclick="calcPercent()"><span>Calculate</span></button>
+
+      <div class="result" id="result">
+        <h2>Result</h2>
+        <div class="highlight" id="percentResult">0</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function updateMode() {
+      const mode = document.getElementById('mode').value;
+      document.getElementById('labelX').textContent = mode === 'pctOf' ? 'X (%)' : mode === 'isWhatPct' ? 'X (part)' : 'X (original)';
+      document.getElementById('labelY').textContent = mode === 'pctOf' ? 'Y' : mode === 'isWhatPct' ? 'Y (whole)' : 'Y (new)';
+    }
+    function calcPercent() {
+      const mode = document.getElementById('mode').value;
+      const X = parseFloat(document.getElementById('valX').value);
+      const Y = parseFloat(document.getElementById('valY').value);
+      if (isNaN(X) || isNaN(Y)) return;
+      let result;
+      if (mode === 'pctOf') result = (X / 100) * Y, document.getElementById('percentResult').textContent = result.toFixed(2);
+      else if (mode === 'isWhatPct') { if (Y === 0) return; result = (X / Y) * 100; document.getElementById('percentResult').textContent = result.toFixed(2) + '%'; }
+      else { if (X === 0) return; result = ((Y - X) / X) * 100; const s = result > 0 ? '+' : ''; document.getElementById('percentResult').textContent = s + result.toFixed(2) + '%'; }
+      showResult('result');
+    }
+  </script>
+</body>
+</html>

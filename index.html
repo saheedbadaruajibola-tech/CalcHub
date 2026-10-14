@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcHub — Free Online Calculators</title>
+  <meta name="description" content="14 free online calculators for finance, health, and daily life. Mortgage, BMI, loan, compound interest, age, percentage, calorie, GPA, and more.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-dot"></span>
+        CalcHub
+      </a>
+      <nav class="nav">
+        <a href="#finance">Finance</a>
+        <a href="#health">Health</a>
+        <a href="#daily">Daily</a>
+        <a href="#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          14 tools · 100% free · No signup
+        </div>
+        <h1>The calculator for <span class="gradient-text">everything</span>.</h1>
+        <p class="hero-sub">Fast, accurate, and private. All calculations run in your browser — nothing is stored or sent anywhere.</p>
+        <div class="search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchBox" placeholder="Search calculators…" autocomplete="off">
+          <kbd class="search-kbd">⌘K</kbd>
+        </div>
+      </div>
+    </section>
+
+    <section id="finance" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Finance</h2>
+          <span class="section-count">6 tools</span>
+        </div>
+        <div class="grid">
+          <a href="calculators/mortgage.html" class="card" data-name="mortgage home loan house">
+            <div class="card-icon">🏠</div>
+            <h3>Mortgage</h3>
+            <p>Monthly payments, interest, and total cost.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/loan.html" class="card" data-name="loan personal car auto">
+            <div class="card-icon">💵</div>
+            <h3>Loan</h3>
+            <p>Payments and total interest on any loan.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/compound-interest.html" class="card" data-name="compound interest investment savings">
+            <div class="card-icon">📈</div>
+            <h3>Compound Interest</h3>
+            <p>Watch your money grow over time.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/tip.html" class="card" data-name="tip restaurant bill split">
+            <div class="card-icon">🍽️</div>
+            <h3>Tip</h3>
+            <p>Tip amount and split the bill.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/discount.html" class="card" data-name="discount sale price savings">
+            <div class="card-icon">🏷️</div>
+            <h3>Discount</h3>
+            <p>Sale price and total savings.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/salary.html" class="card" data-name="salary hourly wage income">
+            <div class="card-icon">💼</div>
+            <h3>Salary</h3>
+            <p>Convert between hourly and yearly pay.</p>
+            <span class="card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="health" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Health</h2>
+          <span class="section-count">3 tools</span>
+        </div>
+        <div class="grid">
+          <a href="calculators/bmi.html" class="card" data-name="bmi body mass index weight">
+            <div class="card-icon">⚖️</div>
+            <h3>BMI</h3>
+            <p>Body Mass Index and healthy range.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/calorie.html" class="card" data-name="calorie tdee diet nutrition">
+            <div class="card-icon">🥗</div>
+            <h3>Calorie</h3>
+            <p>Daily needs based on activity level.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/pregnancy.html" class="card" data-name="pregnancy due date baby">
+            <div class="card-icon">👶</div>
+            <h3>Pregnancy Due Date</h3>
+            <p>Due date and gestational age.</p>
+            <span class="card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Daily life</h2>
+          <span class="section-count">4 tools</span>
+        </div>
+        <div class="grid">
+          <a href="calculators/age.html" class="card" data-name="age birthday date of birth">
+            <div class="card-icon">🎂</div>
+            <h3>Age</h3>
+            <p>Exact age in years, days, and minutes.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/percentage.html" class="card" data-name="percentage percent increase">
+            <div class="card-icon">%</div>
+            <h3>Percentage</h3>
+            <p>X% of Y, percent change, and more.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/date-difference.html" class="card" data-name="date difference days between">
+            <div class="card-icon">📆</div>
+            <h3>Date Difference</h3>
+            <p>Days, weeks, and business days between dates.</p>
+            <span class="card-arrow">→</span>
+          </a>
+          <a href="calculators/gpa.html" class="card" data-name="gpa grade point average">
+            <div class="card-icon">🎓</div>
+            <h3>GPA</h3>
+            <p>Semester and cumulative GPA.</p>
+            <span class="card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="utility" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Utility</h2>
+          <span class="section-count">1 tool</span>
+        </div>
+        <div class="grid">
+          <a href="calculators/currency.html" class="card" data-name="currency exchange rate converter">
+            <div class="card-icon">💱</div>
+            <h3>Currency Converter</h3>
+            <p>15 currencies with live exchange rates.</p>
+            <span class="card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <p id="noResults" class="no-results" style="display:none;">No calculators match your search.</p>
+
+    <section class="features">
+      <div class="container">
+        <h2>Why CalcHub</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Instant</h3>
+            <p>Every calculator runs in your browser. No waiting, no reloads.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Private</h3>
+            <p>We never see or store what you type. Your data stays yours.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🆓</div>
+            <h3>Free forever</h3>
+            <p>No accounts, no paywalls, no upsells. Just tools that work.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Works everywhere</h3>
+            <p>Mobile, tablet, desktop — same clean experience on any screen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="index.html" class="logo">
+          <span class="logo-dot"></span>
+          CalcHub
+        </a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

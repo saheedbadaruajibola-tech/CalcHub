@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator — CalcHub</title>
+  <meta name="description" content="Free tip calculator. Calculate tip amount, total bill, and split per person.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+      <nav class="nav">
+        <a href="../index.html#finance">Finance</a>
+        <a href="../index.html#health">Health</a>
+        <a href="../index.html#daily">Daily</a>
+        <a href="../index.html#utility">Utility</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="calc-container">
+      <a href="../index.html" class="back-link">← All calculators</a>
+      <h1>Tip Calculator</h1>
+      <p class="subtitle">Calculate tip and split the bill.</p>
+
+      <div class="form-group">
+        <label for="bill">Bill Amount ($)</label>
+        <input type="number" id="bill" value="50" step="0.01">
+      </div>
+      <div class="form-group">
+        <label for="tipPct">Tip Percentage (%)</label>
+        <select id="tipPct">
+          <option value="10">10% — Poor service</option>
+          <option value="15">15% — Okay service</option>
+          <option value="18" selected>18% — Good service</option>
+          <option value="20">20% — Great service</option>
+          <option value="25">25% — Excellent service</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="people">Split Between (people)</label>
+        <input type="number" id="people" value="1">
+      </div>
+
+      <button class="calc-btn" onclick="calcTip()"><span>Calculate</span></button>
+
+      <div class="result" id="result">
+        <h2>Per Person</h2>
+        <div class="highlight" id="perPerson">$0</div>
+        <div class="result-item"><span class="label">Tip Amount</span><span class="value" id="tipAmount">$0</span></div>
+        <div class="result-item"><span class="label">Total Bill</span><span class="value" id="totalBill">$0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <a href="../index.html" class="logo"><span class="logo-dot"></span>CalcHub</a>
+        <p class="footer-tagline">Free calculators for finance, health, and daily life.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> CalcHub</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calcTip() {
+      const bill = parseFloat(document.getElementById('bill').value);
+      const people = parseInt(document.getElementById('people').value) || 1;
+      const tipPct = parseFloat(document.getElementById('tipPct').value);
+      if (bill <= 0 || people < 1) return;
+      const tipAmount = bill * (tipPct / 100);
+      const totalBill = bill + tipAmount;
+      const perPerson = totalBill / people;
+      document.getElementById('perPerson').textContent = formatCurrency(perPerson);
+      document.getElementById('tipAmount').textContent = formatCurrency(tipAmount);
+      document.getElementById('totalBill').textContent = formatCurrency(totalBill);
+      showResult('result');
+    }
+  </script>
+</body>
+</html>
